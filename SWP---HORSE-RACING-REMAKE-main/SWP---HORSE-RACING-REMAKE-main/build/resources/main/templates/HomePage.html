@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TurfMaster Pro - Horse Racing Management</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e5e9eb",
+                        "on-primary-container": "#8192a7",
+                        "on-surface-variant": "#44474c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "outline": "#74777d",
+                        "surface": "#f7fafc",
+                        "outline-variant": "#c4c6cd",
+                        "inverse-primary": "#b7c8de",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#98d4ac",
+                        "surface-tint": "#4f6073",
+                        "tertiary-container": "#00311a",
+                        "surface-bright": "#f7fafc",
+                        "on-surface": "#181c1e",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-container": "#745c00",
+                        "tertiary": "#001a0b",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#ebeef0",
+                        "on-primary-fixed-variant": "#38485a",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed-dim": "#e9c349",
+                        "inverse-on-surface": "#eef1f3",
+                        "on-background": "#181c1e",
+                        "surface-container-low": "#f1f4f6",
+                        "surface-dim": "#d7dadc",
+                        "on-tertiary-container": "#649d78",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffe088",
+                        "secondary-container": "#fed65b",
+                        "primary-fixed-dim": "#b7c8de",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#002110",
+                        "secondary": "#735c00",
+                        "tertiary-fixed": "#b4f0c7",
+                        "background": "#f7fafc",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#165132",
+                        "on-secondary-fixed": "#241a00",
+                        "primary-container": "#1a2b3c",
+                        "primary-fixed": "#d2e4fb",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary": "#041627",
+                        "on-primary-fixed": "#0b1d2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "container-max": "1440px",
+                        "gutter-desktop": "24px",
+                        "margin-desktop": "40px",
+                        "gutter-mobile": "16px",
+                        "stack-md": "12px",
+                        "stack-lg": "24px",
+                        "stack-sm": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(255, 224, 136, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-primary border-b border-outline-variant/20 shadow-md sticky top-0 z-50">
+    <div class="flex justify-between items-center w-full px-gutter-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
+        <div class="flex items-center gap-4">
+            <span class="font-headline-md text-headline-md font-bold text-secondary-fixed">Horse Flash</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 h-full">
+            <a class="h-full flex items-center text-secondary-fixed font-bold border-b-2 border-secondary-fixed text-label-md font-label-md" href="#">Trang chủ</a>
+            <a class="h-full flex items-center text-on-primary/80 font-medium hover:text-secondary-fixed transition-colors duration-200 text-label-md font-label-md" href="#">Cuộc đua</a>
+            <a class="h-full flex items-center text-on-primary/80 font-medium hover:text-secondary-fixed transition-colors duration-200 text-label-md font-label-md" href="#">Bảng xếp hạng</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-4">
+            <button class="px-4 py-2 text-label-md font-label-md text-secondary-fixed border border-secondary-fixed rounded-DEFAULT hover:bg-secondary-fixed/10 transition-colors">Đăng nhập</button>
+            <button class="px-4 py-2 text-label-md font-label-md bg-secondary-fixed text-primary rounded-DEFAULT font-bold hover:bg-secondary-fixed-dim transition-colors shadow-sm">Đăng ký</button>
+        </div>
+        <button class="md:hidden text-on-primary p-2">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+</header>
+<main class="flex-grow">
+    <section class="relative w-full h-[600px] md:h-[700px] flex items-center justify-center bg-primary overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="w-full h-full bg-cover bg-center opacity-40 mix-blend-overlay" data-alt="A majestic, high-contrast photograph of thoroughbred racehorses thundering down a dirt track at dawn. Golden hour lighting cuts through the dust kicked up by hooves. The scene is dramatic and powerful, embodying prestige and athletic intensity. The overall palette features deep shadows and warm amber/gold highlights." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA8C4ZjdyY4_VrqKyjVP-NyGxw7YZEwHfxE2mqyeDql0zkF-87GvaLf1bDftOmt2tTbfpLynyw0QOvFjSTQC85zrzTX63hvnlJRPBggnZW64npjaHcKABP5hVpExx4AOrxvj933Al-7BpUtl095nEDL5m2o8cxdD72HiPKk1s4pLwXQ2m4sGmC51ZCKhqWx6-Wh_xuOk4Hm2dwwnxTkz2AACwbgArC1J_20BBJwsX9YK51C9nI9Fxz4nmU-mb5sG5DM0EhfA3rPDGU')">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
+        </div>
+        <div class="relative z-10 text-center px-gutter-mobile max-w-4xl mx-auto flex flex-col items-center gap-stack-lg mt-10">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed/10 border border-secondary-fixed/30 text-secondary-fixed text-label-md font-label-md">
+<span class="material-symbols-outlined text-[16px]">military_tech</span>
+                    QUẢN LÝ ĐUA NGỰA CHUYÊN NGHIỆP
+                </span>
+            <h1 class="font-display-lg text-display-lg text-on-primary mb-2">
+                Làm Chủ Đường Đua Bằng <span class="text-secondary-fixed">Quyền Uy</span>
+            </h1>
+            <p class="font-body-lg text-body-lg text-inverse-primary max-w-2xl text-center">
+                Nền tảng tinh hoa dành cho quản trị viên, chủ sở hữu và kỵ sĩ. Quản lý chuồng ngựa, theo dõi hiệu suất và giám sát hoạt động với độ chính xác tuyệt đối.
+            </p>
+            <div class="flex gap-4 mt-stack-md">
+                <button class="px-6 py-3 bg-secondary-fixed text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-secondary-fixed-dim transition-all glow-effect flex items-center gap-2">
+                    VÀO CỔNG HỆ THỐNG
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 px-gutter-mobile md:px-margin-desktop bg-surface max-w-container-max mx-auto -mt-20 relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_12px_rgba(4,22,39,0.05)] border border-outline-variant/30 flex flex-col hover:shadow-md transition-shadow">
+                <div class="h-12 w-12 bg-primary-container text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined filled text-[24px]">admin_panel_settings</span>
+                </div>
+                <h3 class="font-title-lg text-title-lg text-primary mb-2">Cổng Admin</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                    Kiểm soát toàn diện lịch trình thi đấu, tuân thủ quy định và hoạt động trên đường đua.
+                </p>
+                <button class="w-full py-2.5 border border-primary text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2">
+                    Đăng nhập bằng quyền Admin
+                </button>
+            </div>
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_12px_rgba(4,22,39,0.05)] border-t-4 border-t-secondary-fixed border border-outline-variant/30 flex flex-col hover:shadow-md transition-shadow relative">
+                <div class="absolute top-4 right-4">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-on-tertiary-container"></span>
+</span>
+                </div>
+                <div class="h-12 w-12 bg-secondary-fixed/20 text-secondary-container rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined filled text-[24px]">key</span>
+                </div>
+                <h3 class="font-title-lg text-title-lg text-primary mb-2">Bảng điều khiển Chủ Ngựa</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                    Theo dõi thành tích chuồng ngựa, quản lý hồ sơ ngựa và phân tích dữ liệu cuộc đua.
+                </p>
+                <button class="w-full py-2.5 bg-primary text-on-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary-fixed hover:text-primary transition-colors flex justify-center items-center gap-2">
+                    Đăng nhập bằng quyền Chủ Ngựa
+                </button>
+            </div>
+            <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_12px_rgba(4,22,39,0.05)] border border-outline-variant/30 flex flex-col hover:shadow-md transition-shadow">
+                <div class="h-12 w-12 bg-primary-container text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
+                    <span class="material-symbols-outlined filled text-[24px]">sports</span>
+                </div>
+                <h3 class="font-title-lg text-title-lg text-primary mb-2">Trung tâm Kỵ sĩ</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                    Xem các vòng đua sắp tới, theo dõi số liệu thống kê cá nhân và quản lý thủ tục.
+                </p>
+                <button class="w-full py-2.5 border border-primary text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2">
+                    Đăng nhập bằng quyền Kỵ sĩ
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 bg-surface-container-low border-y border-outline-variant/20">
+        <div class="max-w-container-max mx-auto px-gutter-mobile md:px-margin-desktop">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-stack-lg">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Vận hành trực tiếp</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Số liệu thời gian thực trên tất cả các cơ sở được quản lý.</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded-full border border-outline-variant/30">
+                    <span class="material-symbols-outlined text-on-tertiary-container text-[16px]">sync</span>
+                    <span class="font-label-md text-label-md text-on-surface-variant">CẬP NHẬT VỪA XONG</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant/30 flex flex-col gap-2">
+                    <span class="font-label-md text-label-md text-on-surface-variant uppercase">Ngựa đang hoạt động</span>
+                    <span class="font-display-lg text-headline-lg md:text-display-lg text-primary font-bold">1,492</span>
+                    <div class="flex items-center gap-1 text-on-tertiary-container mt-auto">
+                        <span class="material-symbols-outlined text-[14px]">trending_up</span>
+                        <span class="font-label-md text-label-md">+12 trong tuần</span>
+                    </div>
+                </div>
+                <div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant/30 flex flex-col gap-2">
+                    <span class="font-label-md text-label-md text-on-surface-variant uppercase">Kỵ sĩ đã đăng ký</span>
+                    <span class="font-display-lg text-headline-lg md:text-display-lg text-primary font-bold">348</span>
+                    <div class="flex items-center gap-1 text-on-surface-variant mt-auto">
+                        <span class="material-symbols-outlined text-[14px]">horizontal_rule</span>
+                        <span class="font-label-md text-label-md">Ổn định</span>
+                    </div>
+                </div>
+                <div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant/30 flex flex-col gap-2">
+                    <span class="font-label-md text-label-md text-on-surface-variant uppercase">Cuộc đua sắp tới</span>
+                    <span class="font-display-lg text-headline-lg md:text-display-lg text-secondary-fixed font-bold bg-primary text-transparent bg-clip-text">42</span>
+                    <div class="flex items-center gap-1 text-on-tertiary-container mt-auto">
+                        <span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                        <span class="font-label-md text-label-md">7 ngày tới</span>
+                    </div>
+                </div>
+                <div class="bg-primary p-6 rounded-lg shadow-inner flex flex-col gap-2 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 opacity-10">
+                        <span class="material-symbols-outlined text-[120px] text-secondary-fixed">trophy</span>
+                    </div>
+                    <span class="font-label-md text-label-md text-inverse-primary uppercase relative z-10">Giờ xuất phát tiếp theo</span>
+                    <span class="font-display-lg text-headline-lg md:text-display-lg text-secondary-fixed font-bold relative z-10">02:45</span>
+                    <div class="flex items-center gap-2 mt-auto relative z-10">
+                        <button class="text-label-md font-label-md text-primary bg-secondary-fixed px-3 py-1 rounded-sm w-full hover:bg-secondary-fixed-dim transition-colors">Xem chi tiết</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="bg-primary border-t-4 border-secondary-fixed">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter-desktop px-gutter-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto text-on-primary">
+        <div class="flex flex-col gap-4">
+            <span class="font-headline-md text-headline-md font-bold text-secondary-fixed">Horse Flash</span>
+            <p class="font-body-md text-body-md text-on-primary-container max-w-xs">Chính xác trong từng sải chân. Nền tảng quản lý tối ưu cho các hoạt động đua ngựa chuyên nghiệp.</p>
+        </div>
+        <div class="flex flex-col gap-2">
+            <span class="font-label-md text-label-md text-on-primary/60 uppercase mb-2">Nền tảng</span>
+            <a class="font-label-md text-label-md text-on-primary-container font-normal hover:text-secondary-fixed-dim underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary-fixed w-fit" href="#">Cổng quản trị</a>
+            <a class="font-label-md text-label-md text-on-primary-container font-normal hover:text-secondary-fixed-dim underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary-fixed w-fit" href="#">Bảng điều khiển chủ ngựa</a>
+            <a class="font-label-md text-label-md text-on-primary-container font-normal hover:text-secondary-fixed-dim underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary-fixed w-fit" href="#">Trung tâm kỵ sĩ</a>
+        </div>
+        <div class="flex flex-col gap-2">
+            <span class="font-label-md text-label-md text-on-primary/60 uppercase mb-2">Pháp lý</span>
+            <a class="font-label-md text-label-md text-on-primary-container font-normal hover:text-secondary-fixed-dim underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary-fixed w-fit" href="#">Điều khoản dịch vụ</a>
+            <a class="font-label-md text-label-md text-on-primary-container font-normal hover:text-secondary-fixed-dim underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary-fixed w-fit" href="#">Chính sách bảo mật</a>
+        </div>
+        <div class="flex flex-col gap-2">
+            <span class="font-label-md text-label-md text-on-primary/60 uppercase mb-2">Hỗ trợ</span>
+            <a class="font-label-md text-label-md text-on-primary-container font-normal hover:text-secondary-fixed-dim underline transition-all focus:outline-none focus:ring-2 focus:ring-secondary-fixed w-fit" href="#">Liên hệ hỗ trợ</a>
+        </div>
+        <div class="col-span-1 md:col-span-4 mt-8 pt-8 border-t border-on-primary/10">
+            <p class="font-body-md text-body-md text-on-primary-container text-center">© 2024 Horse Flash. Đã đăng ký Bản quyền. Chính xác trong từng sải chân.</p>
+        </div>
+    </div>
+</footer>
+</body></html>
