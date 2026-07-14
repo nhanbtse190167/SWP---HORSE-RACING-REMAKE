@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="light" lang="vi"><head>
+<html class="light" lang="vi" xmlns:th="http://www.w3.org/1999/xhtml"><head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Horse Flash - Cổng Đăng Nhập Tổng Hợp</title>
@@ -181,7 +181,7 @@
         <div class="max-w-[560px] mx-auto bg-surface-container-lowest p-8 md:p-10 rounded-xl shadow-sm border border-outline-variant relative overflow-hidden">
             <!-- Prestige Header Bar -->
             <div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
-            <form class="space-y-6" id="loginForm">
+            <form class="space-y-6" id="loginForm" th:action="@{/login}" method="post">
                 <div class="space-y-2">
                     <label class="font-label-md text-label-md text-primary uppercase" for="identifier" id="idLabel">Mã số Chủ Ngựa / Email</label>
                     <div class="relative">

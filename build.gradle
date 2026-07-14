@@ -10,7 +10,7 @@ description = 'HorseRacingTournament'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -22,7 +22,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Đã xóa thư viện MySQL và thêm thư viện SQL Server
+    implementation 'com.microsoft.sqlserver:mssql-jdbc'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'

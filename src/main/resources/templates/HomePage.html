@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-
-<html class="light" lang="vi"><head>
+<html class="light" lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>TurfMaster Pro - Horse Racing Management</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -122,13 +122,13 @@
             <span class="font-headline-md text-headline-md font-bold text-secondary-fixed">Horse Flash</span>
         </div>
         <nav class="hidden md:flex items-center gap-8 h-full">
-            <a class="h-full flex items-center text-secondary-fixed font-bold border-b-2 border-secondary-fixed text-label-md font-label-md" href="#">Trang chủ</a>
-            <a class="h-full flex items-center text-on-primary/80 font-medium hover:text-secondary-fixed transition-colors duration-200 text-label-md font-label-md" href="#">Cuộc đua</a>
-            <a class="h-full flex items-center text-on-primary/80 font-medium hover:text-secondary-fixed transition-colors duration-200 text-label-md font-label-md" href="#">Bảng xếp hạng</a>
+            <a th:href="@{/}" class="h-full flex items-center text-secondary-fixed font-bold border-b-2 border-secondary-fixed text-label-md font-label-md">Trang chủ</a>
+            <a th:href="@{/races}" class="h-full flex items-center text-on-primary/80 font-medium hover:text-secondary-fixed transition-colors duration-200 text-label-md font-label-md">Cuộc đua</a>
+            <a th:href="@{/rankings}" class="h-full flex items-center text-on-primary/80 font-medium hover:text-secondary-fixed transition-colors duration-200 text-label-md font-label-md">Bảng xếp hạng</a>
         </nav>
         <div class="hidden md:flex items-center gap-4">
-            <button class="px-4 py-2 text-label-md font-label-md text-secondary-fixed border border-secondary-fixed rounded-DEFAULT hover:bg-secondary-fixed/10 transition-colors">Đăng nhập</button>
-            <button class="px-4 py-2 text-label-md font-label-md bg-secondary-fixed text-primary rounded-DEFAULT font-bold hover:bg-secondary-fixed-dim transition-colors shadow-sm">Đăng ký</button>
+            <a th:href="@{/login}" class="px-4 py-2 text-label-md font-label-md text-secondary-fixed border border-secondary-fixed rounded-DEFAULT hover:bg-secondary-fixed/10 transition-colors text-center inline-block">Đăng nhập</a>
+            <a th:href="@{/register}" class="px-4 py-2 text-label-md font-label-md bg-secondary-fixed text-primary rounded-DEFAULT font-bold hover:bg-secondary-fixed-dim transition-colors shadow-sm text-center inline-block">Đăng ký</a>
         </div>
         <button class="md:hidden text-on-primary p-2">
             <span class="material-symbols-outlined">menu</span>
@@ -143,10 +143,10 @@
             <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
         </div>
         <div class="relative z-10 text-center px-gutter-mobile max-w-4xl mx-auto flex flex-col items-center gap-stack-lg mt-10">
-<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed/10 border border-secondary-fixed/30 text-secondary-fixed text-label-md font-label-md">
-<span class="material-symbols-outlined text-[16px]">military_tech</span>
-                    QUẢN LÝ ĐUA NGỰA CHUYÊN NGHIỆP
-                </span>
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed/10 border border-secondary-fixed/30 text-secondary-fixed text-label-md font-label-md">
+                <span class="material-symbols-outlined text-[16px]">military_tech</span>
+                QUẢN LÝ ĐUA NGỰA CHUYÊN NGHIỆP
+            </span>
             <h1 class="font-display-lg text-display-lg text-on-primary mb-2">
                 Làm Chủ Đường Đua Bằng <span class="text-secondary-fixed">Quyền Uy</span>
             </h1>
@@ -154,10 +154,10 @@
                 Nền tảng tinh hoa dành cho quản trị viên, chủ sở hữu và kỵ sĩ. Quản lý chuồng ngựa, theo dõi hiệu suất và giám sát hoạt động với độ chính xác tuyệt đối.
             </p>
             <div class="flex gap-4 mt-stack-md">
-                <button class="px-6 py-3 bg-secondary-fixed text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-secondary-fixed-dim transition-all glow-effect flex items-center gap-2">
+                <a th:href="@{/login}" class="px-6 py-3 bg-secondary-fixed text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-secondary-fixed-dim transition-all glow-effect flex items-center gap-2 w-fit">
                     VÀO CỔNG HỆ THỐNG
                     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -171,16 +171,16 @@
                 <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
                     Kiểm soát toàn diện lịch trình thi đấu, tuân thủ quy định và hoạt động trên đường đua.
                 </p>
-                <button class="w-full py-2.5 border border-primary text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2">
+                <a th:href="@{/login}" class="w-full py-2.5 border border-primary text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2 text-center">
                     Đăng nhập bằng quyền Admin
-                </button>
+                </a>
             </div>
             <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_12px_rgba(4,22,39,0.05)] border-t-4 border-t-secondary-fixed border border-outline-variant/30 flex flex-col hover:shadow-md transition-shadow relative">
                 <div class="absolute top-4 right-4">
-<span class="flex h-2 w-2 relative">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-on-tertiary-container"></span>
-</span>
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-on-tertiary-container"></span>
+                    </span>
                 </div>
                 <div class="h-12 w-12 bg-secondary-fixed/20 text-secondary-container rounded-lg flex items-center justify-center mb-6">
                     <span class="material-symbols-outlined filled text-[24px]">key</span>
@@ -189,9 +189,9 @@
                 <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
                     Theo dõi thành tích chuồng ngựa, quản lý hồ sơ ngựa và phân tích dữ liệu cuộc đua.
                 </p>
-                <button class="w-full py-2.5 bg-primary text-on-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary-fixed hover:text-primary transition-colors flex justify-center items-center gap-2">
+                <a th:href="@{/login}" class="w-full py-2.5 bg-primary text-on-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary-fixed hover:text-primary transition-colors flex justify-center items-center gap-2 text-center">
                     Đăng nhập bằng quyền Chủ Ngựa
-                </button>
+                </a>
             </div>
             <div class="bg-surface-container-lowest rounded-lg p-6 shadow-[0_4px_12px_rgba(4,22,39,0.05)] border border-outline-variant/30 flex flex-col hover:shadow-md transition-shadow">
                 <div class="h-12 w-12 bg-primary-container text-secondary-fixed rounded-lg flex items-center justify-center mb-6">
@@ -201,9 +201,9 @@
                 <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
                     Xem các vòng đua sắp tới, theo dõi số liệu thống kê cá nhân và quản lý thủ tục.
                 </p>
-                <button class="w-full py-2.5 border border-primary text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2">
+                <a th:href="@{/login}" class="w-full py-2.5 border border-primary text-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2 text-center">
                     Đăng nhập bằng quyền Kỵ sĩ
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -284,4 +284,5 @@
         </div>
     </div>
 </footer>
-</body></html>
+</body>
+</html>
