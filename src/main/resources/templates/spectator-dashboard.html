@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Dashboard Khán giả</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+<aside class="w-64 bg-[#041627] text-white p-6 flex flex-col min-h-screen">
+    <h1 class="text-2xl font-bold text-yellow-400 mb-8">🏇 Horse Racing</h1>
+    <nav class="flex-1">
+        <ul class="space-y-2">
+            <li><a href="/spectator/dashboard" class="block py-2.5 px-4 rounded bg-yellow-400 text-[#041627] font-semibold">📊 Dashboard</a></li>
+            <li><a href="/spectator/predict" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">🔮 Dự đoán</a></li>
+            <li><a href="/spectator/ranking" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">🏆 Xếp hạng</a></li>
+            <li><a href="/logout" class="block py-2.5 px-4 rounded text-red-400 hover:bg-red-600/20 transition mt-8">🚪 Đăng xuất</a></li>
+        </ul>
+    </nav>
+</aside>
+<main class="flex-1 p-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8" th:text="${pageTitle}">Dashboard Khán giả</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow border-l-4 border-yellow-500">
+            <p class="text-gray-500">Tổng điểm dự đoán</p>
+            <p class="text-3xl font-bold text-[#041627]" th:text="${totalPoints}">0</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow border-l-4 border-blue-500">
+            <p class="text-gray-500">Xếp hạng</p>
+            <p class="text-3xl font-bold text-[#041627]">#<span th:text="${rank}">0</span></p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow border-l-4 border-green-500">
+            <p class="text-gray-500">Cuộc đua sắp tới</p>
+            <p class="text-3xl font-bold text-[#041627]" th:text="${upcomingRaces != null ? upcomingRaces.size() : 0}">0</p>
+        </div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">📅 Cuộc đua sắp tới</h3>
+        <div th:each="race : ${upcomingRaces}" class="border-b last:border-b-0 py-3 flex justify-between items-center">
+            <div>
+                <p class="font-semibold" th:text="${race.name}">Summer Cup</p>
+                <p class="text-sm text-gray-500" th:text="${race.raceDatetime}">14/07/2026 09:00</p>
+            </div>
+            <a th:href="'/spectator/predict?raceId=' + ${race.id}" class="text-blue-600 hover:underline text-sm">Dự đoán</a>
+        </div>
+        <div th:if="${upcomingRaces == null or upcomingRaces.isEmpty()}" class="text-center py-4 text-gray-400">
+            Không có cuộc đua nào
+        </div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold mb-4">🔮 Dự đoán của tôi</h3>
+        <div th:each="prediction : ${predictions}" class="border-b last:border-b-0 py-3 flex justify-between items-center">
+            <div>
+                <p class="font-semibold" th:text="${prediction.race.name}">Summer Cup</p>
+                <p class="text-sm text-gray-500">Dự đoán: #<span th:text="${prediction.predictedTop1}"></span> - #<span th:text="${prediction.predictedTop2}"></span> - #<span th:text="${prediction.predictedTop3}"></span></p>
+            </div>
+            <span class="text-sm font-semibold" th:text="'+ ' + ${prediction.pointsAwarded} + ' điểm'">+ 10 điểm</span>
+        </div>
+        <div th:if="${predictions == null or predictions.isEmpty()}" class="text-center py-4 text-gray-400">
+            Chưa có dự đoán nào
+        </div>
+    </div>
+</main>
+</body>
+</html>

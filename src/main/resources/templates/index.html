@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horse Racing Tournament</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- Navbar -->
+<nav class="bg-[#041627] text-white p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-yellow-400">🏇 Horse Racing</h1>
+        <div class="flex gap-4">
+            <a href="/login" class="px-4 py-2 bg-yellow-400 text-[#041627] rounded hover:bg-yellow-300 transition">Đăng nhập</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow container mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-[#041627] mb-4">🏇 Chào mừng đến với Horse Racing Tournament!</h1>
+        <p class="text-gray-600 text-lg">Quản lý giải đua ngựa chuyên nghiệp</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow text-center border-b-4 border-blue-500">
+            <p class="text-3xl font-bold text-[#041627]" th:text="${totalHorses}">0</p>
+            <p class="text-gray-500">Ngựa đua</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow text-center border-b-4 border-green-500">
+            <p class="text-3xl font-bold text-[#041627]" th:text="${totalJockeys}">0</p>
+            <p class="text-gray-500">Kỵ sĩ</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow text-center border-b-4 border-yellow-500">
+            <p class="text-3xl font-bold text-[#041627]" th:text="${totalRaces}">0</p>
+            <p class="text-gray-500">Cuộc đua</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow text-center border-b-4 border-purple-500">
+            <p class="text-3xl font-bold text-[#041627]">🏆</p>
+            <p class="text-gray-500">Giải đấu</p>
+        </div>
+    </div>
+
+    <!-- Role Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <a href="/login" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center border-t-4 border-purple-500">
+            <span class="text-3xl block mb-2">👑</span>
+            <h3 class="font-bold text-[#041627]">Admin</h3>
+            <p class="text-sm text-gray-500">Quản trị hệ thống</p>
+        </a>
+        <a href="/login" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center border-t-4 border-blue-500">
+            <span class="text-3xl block mb-2">🐴</span>
+            <h3 class="font-bold text-[#041627]">Chủ ngựa</h3>
+            <p class="text-sm text-gray-500">Quản lý ngựa</p>
+        </a>
+        <a href="/login" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center border-t-4 border-green-500">
+            <span class="text-3xl block mb-2">🏇</span>
+            <h3 class="font-bold text-[#041627]">Kỵ sĩ</h3>
+            <p class="text-sm text-gray-500">Tham gia đua</p>
+        </a>
+        <a href="/login" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center border-t-4 border-orange-500">
+            <span class="text-3xl block mb-2">⚖️</span>
+            <h3 class="font-bold text-[#041627]">Trọng tài</h3>
+            <p class="text-sm text-gray-500">Xác nhận kết quả</p>
+        </a>
+        <a href="/login" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center border-t-4 border-yellow-500">
+            <span class="text-3xl block mb-2">👀</span>
+            <h3 class="font-bold text-[#041627]">Khán giả</h3>
+            <p class="text-sm text-gray-500">Dự đoán kết quả</p>
+        </a>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#041627] text-white text-center py-4 mt-12">
+    <p>© 2026 Horse Racing Tournament. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Lịch đua</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+<aside class="w-64 bg-[#041627] text-white p-6 flex flex-col min-h-screen">
+    <h1 class="text-2xl font-bold text-yellow-400 mb-8">🏇 Horse Racing</h1>
+    <nav class="flex-1">
+        <ul class="space-y-2">
+            <li><a href="/jockey/dashboard" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">📊 Dashboard</a></li>
+            <li><a href="/jockey/schedule" class="block py-2.5 px-4 rounded bg-yellow-400 text-[#041627] font-semibold">📅 Lịch đua</a></li>
+            <li><a href="/jockey/profile" class="block py-2.5 px-4 rounded hover:bg-gray-700 transition">👤 Thông tin</a></li>
+            <li><a href="/logout" class="block py-2.5 px-4 rounded text-red-400 hover:bg-red-600/20 transition mt-8">🚪 Đăng xuất</a></li>
+        </ul>
+    </nav>
+</aside>
+<main class="flex-1 p-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8" th:text="${pageTitle}">Lịch đua của tôi</h1>
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <table class="w-full">
+            <thead class="bg-gray-50">
+            <tr class="text-left text-gray-600">
+                <th class="p-3">Tên cuộc đua</th>
+                <th class="p-3">Thời gian</th>
+                <th class="p-3">Ngựa</th>
+                <th class="p-3">Trạng thái</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="race : ${races}" class="border-t hover:bg-gray-50">
+                <td class="p-3 font-semibold" th:text="${race.name}">Summer Cup</td>
+                <td class="p-3" th:text="${race.raceDatetime}">14/07/2026 09:00</td>
+                <td class="p-3" th:text="${race.raceEntries != null and not race.raceEntries.isEmpty() ? race.raceEntries[0].horse.name : 'Chưa xác định'}">Lightning</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded-full text-xs bg-green-100 text-green-800" th:text="${race.status}">upcoming</span></td>
+            </tr>
+            <tr th:if="${races == null or races.isEmpty()}">
+                <td colspan="4" class="text-center py-8 text-gray-400">Chưa có cuộc đua nào</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

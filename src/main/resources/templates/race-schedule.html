@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Lịch đua</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto p-8">
+    <h1 class="text-3xl font-bold text-[#041627] mb-8">🏇 Lịch đua</h1>
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="bg-[#041627] text-white px-6 py-3">
+            <h2 class="font-semibold">📅 Cuộc đua sắp tới</h2>
+        </div>
+        <div class="p-4">
+            <div th:each="race : ${upcomingRaces}" class="border-b last:border-b-0 py-4 flex justify-between items-center">
+                <div>
+                    <p class="font-semibold text-gray-800" th:text="${race.name}">Summer Cup</p>
+                    <p class="text-sm text-gray-500" th:text="${race.raceDatetime}">14/07/2026 - 09:00</p>
+                </div>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Sắp diễn ra</span>
+            </div>
+            <div th:if="${upcomingRaces == null or upcomingRaces.isEmpty()}" class="text-center py-8 text-gray-400">
+                Không có cuộc đua nào
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
